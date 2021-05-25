@@ -1,7 +1,13 @@
 body{
-  display:flex;
-  min-height:100vh;
-  min-width:100vw;
+	display:flex;
+	min-height:100vh;
+	min-width:100vw;
+ 	align-items: center;
+ 	justify-content: center;
+}
+.logo{
+	width: 60%;
+	border:1px solid red;
 }
 .logo h1{
 	font-family: 'Press Start 2P', cursive;

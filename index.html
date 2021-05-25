@@ -13,7 +13,31 @@
 		body{
 			min-height:100vh;
 			min-width:100vw;
-			font-size:10px;
+			font-size:15px;
+			line-height:1.6;
+			overflow-x:hidden;
+		}
+
+		@media screen and (min-width:768px){
+			body{
+				font-size:16px;
+			}
+			
+		}
+
+		@media screen and (min-width:1200px){
+			body{
+				font-size:18px;
+			}
+			.container{
+				align-items: flex-start;
+			}
+		}
+
+		@media screen and (min-width:1600px){
+			body{
+				font-size:20px;
+			}
 		}
 		h1{
 			font-size: 3em;
@@ -83,26 +107,6 @@
 			animation-fill-mode: forwards;
 		}
 
-		@media only screen and (min-width: 900px){
-			body{
-				font-size: 16px;
-			}
-		}
-		@media only screen and (min-width: 1250px){
-			body{
-				font-size: 30px;
-			}
-			.container{
-				align-items: flex-start;
-			}
-		}
-
-		@media only screen and (min-width: 1500px){
-			body{
-				font-size: 35px;
-			}
-
-		}
 		@keyframes in{
 			from{
 				transform:translateX(0);

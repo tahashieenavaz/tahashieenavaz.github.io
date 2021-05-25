@@ -3,3 +3,6 @@ body{
   min-height:100vh;
   min-width:100vw;
 }
+.logo{
+	font-family: 'Press Start 2P', cursive;
+}

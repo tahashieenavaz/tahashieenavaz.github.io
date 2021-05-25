@@ -24,7 +24,10 @@
 		h3 { font-size: 1rem; }
 
 		ul{font-size: .7rem;}
-
+		ul,span{
+			margin:0!important;
+			padding:0;
+		}
 		.wull{width: 100%;}
 		.press{
 			font-family: 'Press Start 2P', cursive;
@@ -39,17 +42,17 @@
 		}
 		.container{
 			width: 100%;
+			margin-bottom: 8rem;
 		}
-		.container > *{
-			width:60%
-			;
+		.container > *,footer > div{
+			width:60%;
 		}
 		.block{display: block}
 		.debug{
 			border:1px solid red;
 		}
 		.mx-auto{margin:0 auto;}
-		.max{max-width: 1250px;}
+		.max{max-width: 1500px;}
 		.dc{flex-direction: column;}
 		.flex-1{flex:1;}
 		footer{
@@ -57,15 +60,13 @@
 			width: 100%;
 			color:#fff;
 			font-size: 0.75rem;
+			padding:3rem 0;
 		}
 		footer a{
 			font-size:.8em;
 		}
-		footer *{
-			margin:20px 0;
-		}
 		*,::after,::before{box-sizing: border-box;}
-		ul{list-style: none;margin:0;padding:0;}
+		ul{list-style: none;}
 		a{
 			color:inherit;
 			text-decoration: none;
@@ -133,20 +134,25 @@
 			body{
 				font-size:18px;
 			}
+			footer{
+				padding:50px;
+			}
 		}
 
 		@media screen and (min-width:1600px){
 			body{
 				font-size:20px;
 			}
-			.container{
+			.container,footer > div{
 				align-items: flex-start!important;
 				padding:30px;
 			}
 			h1 { font-size: 5rem;}
 			h2 { font-size: 4rem; }
 			h3 { font-size: 3.75rem; }
-
+			.container > *,footer > div{
+				width:80%;
+			}
 			ul,footer{
 				font-size:2.5rem;
 			}
@@ -201,7 +207,7 @@
 				</span>
 			</h1>
 		</div>
-		<h3> Projects: </h3>
+		<h3> Gits: </h3>
 		<nav>
 			<ul class="flex dc">
 				<li><a href="#"> elCentralization </a></li>
@@ -213,7 +219,7 @@
 	</div>
 
 	<footer>
-		<div class="max mx-auto" style="width: 60%;">
+		<div class="max mx-auto flex dc">
 			<span class="block">All rights:not(.font) reserved by Taha 2021</span>
 			<a href="https://twitter.com/TahaShieenavaz">@underdash</a>
 		</div>

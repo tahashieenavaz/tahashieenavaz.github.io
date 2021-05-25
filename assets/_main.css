@@ -1,10 +1,10 @@
 body{
 	min-height:100vh;
 	min-width:100vw;
-	font-size:10px;
+	font-size:12px;
 }
 h1{
-	font-size: 3rem;
+	font-size: 3em;
 }
 .wull{width: 100%;}
 .logo{
@@ -30,51 +30,23 @@ h1{
 .debug{
 	border:1px solid red;
 }
+.mx-auto{margin:0 auto;}
+.max{max-width: 1250px;}
 footer{
 	background: black;
 	width: 100%;
 	color:#fff;
 	padding:30px;
-	font-size: 1rem;
+	font-size: 1em;
 }
 footer *{
 	margin:20px 0;
 }
 *,::after,::before{box-sizing: border-box;}
 ul{list-style: none;margin:0;padding:0;}
-a{color:inherit;text-decoration: none;font-size:1.1233rem;}
+a{color:inherit;text-decoration: none;font-size:1.1233em;}
 li{flex:1;}
 
-@media only screen and (min-width: 900px){
-	body{
-		font-size: 30px;
-	}
-}
-@media only screen and (min-width: 1250px){
-	body{
-		font-size: 40px;
-	}
-}
-@keyframes in{
-	from{
-		transform:translateX(0);
-		opacity: 0;
-	}
-	to{
-		transform:translateX(50px);
-		opacity: 1;
-	}
-}
-@keyframes out{
-	from{
-		transform:translateX(50px);
-		opacity: 1;
-	}
-	to{
-		transform:translateX(0);
-		opacity: 0;
-	}
-}
 li{
 	display: flex;
 	position: relative;
@@ -97,4 +69,45 @@ li:hover::before{
 	animation: in .2s;
 	visibility: visible;
 	animation-fill-mode: forwards;
+}
+
+@media only screen and (min-width: 900px){
+	body{
+		font-size: 16px;
+	}
+}
+@media only screen and (min-width: 1250px){
+	body{
+		font-size: 30px;
+	}
+	.container{
+		align-items: flex-start;
+	}
+}
+
+@media only screen and (min-width: 1500px){
+	body{
+		font-size: 35px;
+	}
+
+}
+@keyframes in{
+	from{
+		transform:translateX(0);
+		opacity: 0;
+	}
+	to{
+		transform:translateX(50px);
+		opacity: 1;
+	}
+}
+@keyframes out{
+	from{
+		transform:translateX(50px);
+		opacity: 1;
+	}
+	to{
+		transform:translateX(0);
+		opacity: 0;
+	}
 }

@@ -21,9 +21,10 @@
 
 		h1 { font-size: 1.5rem;}
 		h2 { font-size: 1.3rem; }
-		h3 { font-size: 1.1rem; }
-		h4 { font-size: 1rem; }
-		h5 { font-size: .8rem; }
+		h3 { font-size: 1rem; }
+
+		ul{font-size: .7rem;}
+
 		.wull{width: 100%;}
 		.press{
 			font-family: 'Press Start 2P', cursive;
@@ -39,7 +40,7 @@
 		.container{
 			width: 100%;
 		}
-		.container *{
+		.container > *{
 			width:60%
 			;
 		}
@@ -49,15 +50,16 @@
 		}
 		.mx-auto{margin:0 auto;}
 		.max{max-width: 1250px;}
+		.dc{flex-direction: column;}
+		.flex-1{flex:1;}
 		footer{
 			background: black;
 			width: 100%;
 			color:#fff;
-			padding:30px;
-			font-size: 0.5rem;
+			font-size: 0.75rem;
 		}
 		footer a{
-			font-size:.9em;
+			font-size:.8em;
 		}
 		footer *{
 			margin:20px 0;
@@ -67,7 +69,6 @@
 		a{
 			color:inherit;
 			text-decoration: none;
-			font-size:0.9rem;
 		}
 		li{
 			display: flex;
@@ -77,14 +78,13 @@
 			flex:1;
 		}
 		li::before{
-			content: "-->";
+			content: "->";
 			margin:4px 0 0 -100px;
 			padding:0;
 			visibility: hidden;
 			position: absolute;
 			opacity: 0;
 			transition: .5s;
-			font-size:15px;
 			animation:out .2s;
 		}
 
@@ -115,11 +115,17 @@
 			}
 		}
 		@media screen and (min-width:768px){
+			
 			body{
 				font-size:16px;
 			}
-			footer{
-				font-size:1rem;
+
+			h1 { font-size: 2.5rem;}
+			h2 { font-size: 1.999rem; }
+			h3 { font-size: 1.75rem; }
+
+			ul,footer{
+				font-size:0.9555555rem;
 			}
 		}
 
@@ -137,19 +143,54 @@
 				align-items: flex-start!important;
 				padding:30px;
 			}
+			h1 { font-size: 5rem;}
+			h2 { font-size: 4rem; }
+			h3 { font-size: 3.75rem; }
+
+			ul,footer{
+				font-size:2.5rem;
+			}
+			li{
+				margin:35px 0;
+			}
+			@keyframes in{
+				from{
+					transform:translateX(0);
+					opacity: 0;
+				}
+				to{
+					transform:translateX(50px);
+					opacity: 1;
+				}
+			}
+			@keyframes out{
+				from{
+					transform:translateX(50px);
+					opacity: 1;
+				}
+				to{
+					transform:translateX(0);
+					opacity: 0;
+				}
+			}
+
+			li::before{
+				margin:4px 0 0 -150px;
+				padding:0;
+				visibility: hidden;
+				position: absolute;
+				opacity: 0;
+				transition: .5s;
+				animation:out .2s;
+			}
+
 		}
-		@media screen and (min-width:768px){
-		  h1 { font-size: 3rem;}
-		  h2 { font-size: 2.5rem; }
-		  h3 { font-size: 2rem; }
-		  h4 { font-size: 1.5rem; }
-		  h5 { font-size: 1rem; }
-		}
+
 	</style>
 </head>
-<body class="flex center press" style="flex-direction: column;">
+<body class="flex center press dc">
 
-	<div class="container flex center max" style="flex-direction: column;flex:1;">
+	<div class="container flex center max dc flex-1">
 		<div class="logo flex">
 			<h1>
 				<span class="block">
@@ -162,17 +203,17 @@
 		</div>
 		<h3> Projects: </h3>
 		<nav>
-			<ul class="flex" style="flex-direction: column">
+			<ul class="flex dc">
 				<li><a href="#"> elCentralization </a></li>
-<!-- 				<li><a href="#"> Sass Debuger </a></li>
+				<li><a href="#"> Sass Debuger </a></li>
 				<li><a href="#"> Link </a></li>
-				<li><a href="#"> Link </a></li> -->
+				<li><a href="#"> Link </a></li>
 			</ul>
 		</nav>
 	</div>
 
 	<footer>
-		<div class="max mx-auto">
+		<div class="max mx-auto" style="width: 60%;">
 			<span class="block">All rights:not(.font) reserved by Taha 2021</span>
 			<a href="https://twitter.com/TahaShieenavaz">@underdash</a>
 		</div>

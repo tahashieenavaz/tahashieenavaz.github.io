@@ -71,14 +71,14 @@
 			color:inherit;
 			text-decoration: none;
 		}
-		li{
+		.projects li{
 			display: flex;
 			position: relative;
 			min-height: 50px;
 			align-items: center;
 			flex:1;
 		}
-		li::before{
+		.projects li::before{
 			content: "->";
 			margin:4px 0 0 -100px;
 			padding:0;
@@ -89,7 +89,7 @@
 			animation:out .2s;
 		}
 
-		li:hover::before{
+		.projects li:hover::before{
 			animation: in .2s;
 			visibility: visible;
 			animation-fill-mode: forwards;
@@ -189,14 +189,38 @@
 				transition: .5s;
 				animation:out .2s;
 			}
-
 		}
+		.nav li:not(:first-child){
+			margin-left:30px;
+		}
+		div h3{
+			margin-top:0;
+		}
+		.about a:not(.ignore-link-color){
+			color:orange;
+		}
+blockquote {
+  background: white;
+  padding: 20px 30px 20px 30px;
+  margin: 50px 0;
+  width: 50%;
+  max-width: 500px;
+}
+blockquote:first-child{
+	margin-top:0;
+}
 
+.stacked {
+  border: solid 2px;
+  padding: 20px 30px 20px 30px;
+  box-shadow: 13px 13px 0 0 white, 15px 15px 0 0 #0000FF, 15px 11px 0 0 #0000FF, 11px 15px 0 0 #0000FF;
+  font-size:12px;
+}
 	</style>
 </head>
 <body class="flex center press dc">
 
-	<div class="container flex center max dc flex-1">
+	<div id="app" class="container flex center max dc flex-1">
 		<div class="logo flex">
 			<h1>
 				<span class="block">
@@ -207,15 +231,16 @@
 				</span>
 			</h1>
 		</div>
-		<h3> Gits: </h3>
-		<nav>
-			<ul class="flex dc">
-				<li><a href="#"> elCentralization </a></li>
-				<li><a href="#"> Sass Debuger </a></li>
-				<li><a href="#"> Link </a></li>
-				<li><a href="#"> Link </a></li>
+		<nav class="nav">
+			<ul class="flex">
+				<li><router-link to="/">Projects</router-link></li>
+				<li><router-link to="/qoutes">Qoutes</router-link></li>
+				<li><router-link to="/about">About</router-link></li>
 			</ul>
 		</nav>
+		<div class="flex-1" style="margin-top: 50px;min-height:50vh;">
+			<router-view></router-view>
+		</div>
 	</div>
 
 	<footer>
@@ -224,5 +249,107 @@
 			<a href="https://twitter.com/TahaShieenavaz">@underdash</a>
 		</div>
 	</footer>
+	<script src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"></script>
+	<script src="https://unpkg.com/vue-router@3.5.1/dist/vue-router.min.js"></script>
+	<script>
+const Home = {
+	template:`
+<div>
+	<h3> github: </h3>
+	<nav>
+		<ul class="flex dc projects">
+			<li><a href="#"> this website </a></li>
+			<li><a href="#"> Sass Debuger </a></li>
+			<li><a href="#"> Link </a></li>
+			<li><a href="#"> Link </a></li>
+		</ul>
+	</nav>
+</div>
+	`
+}
+const Qoutes = {
+	template:`
+<div class="flex dc">
+	<blockquote v-for="q in qoutes" class="stacked">
+      <p>{{q.body}}</p>
+    </blockquote>
+</div>
+
+	`,
+	data: () => ({
+		qoutes:"",
+	}),
+	mounted:function(){
+		fetch("https://tahashieenavaz.github.io/qoutes/qoutes.json").then(res => res.json())
+		.then((data) => {
+			this.qoutes = data;
+		});
+	},
+}
+const About = {
+	template:`
+<div class="about">
+	<p>With {{experience}} years of web development experience and having just {{age}} years!</p>
+		<p>I develop fullstack web with Vue.js and <span title="lang">PHP</span>.</p>
+		<p>I study CE but highly interested in history and evolutionism. </p>
+		<p>You can often find me reading books and <router-link to="/books">recommending</router-link> them to others.</p>
+		<p>I write and keep life saving quotes from great legends and <router-link to="/qoutes">this</router-link> is a handfull list of them.</p>
+		<p><a class="ignore-link-color" href="#">Good news! You can help me though! <span style="color:orange">(click)</span></a></p>
+		<span @click="dynamicNumbers" style="font-size:.7rem;color:tomato;cursor:pointer"> recalculate </span>
+</div>
+	`,
+	data:()=>({
+		age:0,
+		experience: 0,
+		interval:0,
+	}),
+	methods:{
+		dynamicNumbers(){
+			if(this.interval) return;
+			let times = 0;
+			this.interval = setInterval(()=>{
+				this.age = Math.floor(Math.random() * 100);
+				this.experience = Math.floor(Math.random() * 100);
+				if(times >= 17){
+					clearInterval(this.interval);
+					let year = new Date().getFullYear();
+					this.age = year - 2000;
+					this.experience = year - 2013;
+					this.interval = 0;
+				}
+				times++;
+			},100);
+		},
+	},
+	mounted:function(){
+		let year = new Date().getFullYear();
+		this.age = year - 2000;
+		this.experience = year - 2013;
+	}
+}
+const Hire = {
+	template:`
+<div>sdg</div>
+	`
+}
+let routerHandle = new VueRouter({
+	routes: [
+		{path: '/', component:Home},
+		{path: '/about', component:About},
+		{path: '/hire', component:Hire},
+		{path: '/qoutes', component:Qoutes},
+	]
+});
+
+
+
+let app = new Vue({
+	el:"#app",
+	router: routerHandle,
+	data: ()=>({
+
+	}),
+});
+	</script>
 </body>
 </html>

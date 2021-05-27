@@ -7,7 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css@7.0.0/normalize.css">
 	<style type="text/css">
 		body{
@@ -31,6 +32,9 @@
 		.wull{width: 100%;}
 		.press{
 			font-family: 'Press Start 2P', cursive;
+		}
+		.sand{
+			font-family: 'Quicksand', sans-serif;
 		}
 		.flex{
 			display:flex;
@@ -218,10 +222,10 @@ blockquote:first-child{
 }
 	</style>
 </head>
-<body class="flex center press dc">
+<body class="flex center dc sand">
 
 	<div id="app" class="container flex center max dc flex-1">
-		<div class="logo flex">
+		<div class="logo flex press">
 			<h1>
 				<span class="block">
 					Taha
@@ -254,7 +258,7 @@ blockquote:first-child{
 	<script>
 const Home = {
 	template:`
-<div>
+<div class="press">
 	<h3> github: </h3>
 	<nav>
 		<ul class="flex dc projects">

@@ -23,7 +23,9 @@
 		h1 { font-size: 1.5rem;}
 		h2 { font-size: 1.3rem; }
 		h3 { font-size: 1rem; }
-
+		a{
+			font-size:1rem;
+		}
 		ul{font-size: .7rem;}
 		ul,span{
 			margin:0!important;
@@ -129,9 +131,10 @@
 			h2 { font-size: 1.999rem; }
 			h3 { font-size: 1.75rem; }
 
-			ul,footer{
-				font-size:0.9555555rem;
+			a,ul,footer{
+				font-size:1.3rem;
 			}
+
 		}
 
 		@media screen and (min-width:1200px){
@@ -299,7 +302,7 @@ const About = {
 		<p>You can often find me reading books and <router-link to="/books">recommending</router-link> them to others.</p>
 		<p>I write and keep life saving quotes from great legends and <router-link to="/qoutes">this</router-link> is a handfull list of them.</p>
 		<p><a class="ignore-link-color" href="#">Good news! You can help me though! <span style="color:orange">(click)</span></a></p>
-		<span @click="dynamicNumbers" style="font-size:.7rem;color:tomato;cursor:pointer"> recalculate </span>
+		<span @click="dynamicNumbers" style="font-size:.7rem;color:tomato;cursor:pointer"> try this </span>
 </div>
 	`,
 	data:()=>({

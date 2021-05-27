@@ -37,7 +37,7 @@ const About = {
 <div class="about">
 	<p>With {{experience}} years of web development experience and having just {{age}} years!</p>
 		<p>I develop fullstack web with Vue.js and <span title="lang">PHP</span>.</p>
-		<p>I study CE but highly interested in history and evolutionism. </p>
+		<p>I study Computer Engineering but highly interested in history and evolutionism. </p>
 		<p>You can often find me reading books and <router-link to="/books">recommending</router-link> them to others.</p>
 		<p>I write and keep life saving quotes from great legends and <router-link to="/qoutes">this</router-link> is a handfull list of them.</p>
 		<p><a class="ignore-link-color" href="#">Good news! You can help me though! <span style="color:orange">(click)</span></a></p>

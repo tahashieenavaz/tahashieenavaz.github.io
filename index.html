@@ -26,7 +26,7 @@
 		a{
 			font-size:1rem;
 		}
-		.about{
+		.about,.about a{
 			font-size:1.2rem;
 		}
 		ul{font-size: .7rem;}
@@ -54,7 +54,7 @@
 			margin-bottom: 8rem;
 		}
 		.container > *,footer > div{
-			width:80%;
+			width:85%;
 		}
 		.block{display: block}
 		.debug{
@@ -124,6 +124,11 @@
 				opacity: 0;
 			}
 		}
+		@keyframes blinking{
+		    0% {opacity: 1;}
+		    50% {opacity: 0.75; }
+		    100% {opacity: 1;}
+		}
 		@media screen and (min-width:768px){
 			
 			body{
@@ -137,7 +142,7 @@
 			a,ul,footer{
 				font-size:1.3rem;
 			}
-			.about{
+			.about,.about a{
 				font-size:1.4rem;
 			}
 			.container > *,footer > div{
@@ -211,34 +216,62 @@
 		div h3{
 			margin-top:0;
 		}
+
 		.about a:not(.ignore-link-color){
 			color:orange;
 		}
-blockquote {
-  background: white;
-  padding: 20px 30px 20px 30px;
-  margin: 30px 0;
-  width: 100%;
-  max-width: 500px;
-  position: relative;
-}
-blockquote:first-child{
-	margin-top:0;
-}
+		blockquote {
+		  background: white;
+		  padding: 20px 30px 20px 30px;
+		  margin: 30px 0;
+		  width: 100%;
+		  max-width: 500px;
+		  position: relative;
+		  color:#000!important;
+		}
+		blockquote:first-child{
+			margin-top:0;
+		}
 
-.stacked {
-  border: solid 2px;
-  padding: 20px 30px 20px 30px;
-  box-shadow: 13px 13px 0 0 white, 15px 15px 0 0 #0000FF, 15px 11px 0 0 #0000FF, 11px 15px 0 0 #0000FF;
-  font-size:1rem;
-}
+		.stacked {
+		  border: solid 2px;
+		  padding: 20px 30px 20px 30px;
+		  box-shadow: 13px 13px 0 0 white, 15px 15px 0 0 #0000FF, 15px 11px 0 0 #0000FF, 11px 15px 0 0 #0000FF;
+		  font-size:1rem;
+		}
+		.nav a{
+			transition: .25s;
+		}
+		.router-link-exact-active {
+			text-decoration: line-through;
+			color:#ccc;
+		}
+		.router-link-exact-active[href="#/hire"] {
+			text-decoration: none;
+			color:#000;
+			font-weight: 700;
+		}
+		.heart {
+		  fill: red;
+		  position: relative;
+		  width: 15px;
+		  display: none;
+		}
+		.router-link-exact-active .heart{
+			display:inline-block;
+		}
+		@keyframes pulse {
+		  0% { transform: scale(1); }
+		  50% { transform: scale(1.3); }
+		  100% { transform: scale(1); }
+		}
 	</style>
 </head>
 <body class="flex center dc sand">
 
 	<div id="app" class="container flex center max dc flex-1">
 		<div class="logo flex press">
-			<h1>
+			<h1 @click="darkItUp">
 				<span class="block">
 					Taha
 				</span>
@@ -251,7 +284,14 @@ blockquote:first-child{
 			<ul class="flex">
 				<li><router-link to="/">Projects</router-link></li>
 				<li><router-link to="/qoutes">Qoutes</router-link></li>
-				<li><router-link to="/about">About</router-link></li>
+				<li><router-link to="/about">Who</router-link></li>
+				<!-- <li><router-link to="/hire">
+					Hire me
+					<svg class="heart" viewBox="0 0 32 29.6">
+					  <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+						c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+					</svg> 
+				</router-link></li> -->
 			</ul>
 		</nav>
 		<div class="flex-1" style="margin-top: 50px;min-height:50vh;">
@@ -261,8 +301,7 @@ blockquote:first-child{
 
 	<footer>
 		<div class="max mx-auto flex dc">
-			<span class="block">All rights:not(.font) reserved by Taha 2021</span>
-			<a href="https://twitter.com/TahaShieenavaz">@underdash</a>
+			<span class="block">Designed & Developed By Taha Shieenavaz</span>
 		</div>
 	</footer>
 	<script src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"></script>
@@ -275,8 +314,8 @@ const Home = {
 	<nav>
 		<ul class="flex dc projects">
 			<li><a href="https://github.com/tahashieenavaz/tahashieenavaz.github.io" target="_blank"> this website </a></li>
-			<li><a href="#"> Sass Debuger </a></li>
-			<li><a href="#"> Link </a></li>
+			<li><a href="#"> sass debugger </a></li>
+			<li><a href="#"> tehran taxi </a></li>
 			<li><a href="#"> Link </a></li>
 		</ul>
 	</nav>
@@ -297,7 +336,7 @@ const Qoutes = {
 		qoutes:"",
 	}),
 	mounted:function(){
-		fetch("https://tahashieenavaz.github.io/qoutes/qoutes.json").then(res => res.json())
+		fetch("https://tahashieenavaz.github.io/quotes/quotes.json").then(res => res.json())
 		.then((data) => {
 			this.qoutes = data;
 		});
@@ -306,18 +345,18 @@ const Qoutes = {
 const About = {
 	template:`
 <div class="about">
-	<p>With {{experience}} years of web development experience and having just {{age}} years! I develop fullstack web with Vue.js and <span title="lang">PHP</span> professionally.</p>
+	<p @click="loading=false">With {{experience}} years of web development experience and having just {{age}} years! I develop fullstack web with <span style="text-decoration:underline dashed green">Vue.js</span> and <span title="lang">PHP</span> professionally.</p>
 		<p>I study computer engineering but highly interested in history and evolutionism. </p>
-		<p>You can often find me reading books and <router-link to="/books">recommending</router-link> them to others.</p>
-		<p>I write and keep life saving quotes from great legends and <router-link to="/qoutes">this</router-link> is a handfull list of them.</p>
-		<p><a class="ignore-link-color" href="#">Good news! You can help me though! <span style="color:orange">(click)</span></a></p>
-		<span @click="dynamicNumbers" style="font-size:.7rem;color:tomato;cursor:pointer"> try this </span>
+		<p @click="loading=true">You can often find me reading books and recommending them to others.</p>
+		<p>I keep life saving quotes from great legends and <router-link to="/qoutes">this</router-link> is a handfull list of them.</p>
+		<span @click="dynamicNumbers" style="opacity:1;color:tomato;cursor:pointer;animation:blinking .8s ease-out infinite;"> try this </span>
 </div>
 	`,
 	data:()=>({
 		age:0,
 		experience: 0,
 		interval:0,
+		loading:true,
 	}),
 	methods:{
 		dynamicNumbers(){
@@ -363,8 +402,49 @@ let app = new Vue({
 	el:"#app",
 	router: routerHandle,
 	data: ()=>({
-
+		loading: false,
+		interval: 0,
+		fakeDelay: 1600,
+		darkMode: false,
 	}),
+	watch:{
+		$route(to,from){
+			this.startLoading();
+			if(to.path != '/hire')
+				setTimeout(this.endLoading, this.fakeDelay);
+		},
+	},
+	methods:{
+		startLoading(){
+			if(this.interval == 0){
+				this.loading = true;
+				let el = document.querySelector("h1");
+				this.interval = setInterval(()=>{
+					el.style.color = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+				},75);
+			}
+		},
+		endLoading(){
+			clearInterval(this.interval);
+			this.interval = 0;
+			if(this.darkMode)
+				document.querySelector("h1").style.color = "#fff";
+			else
+				document.querySelector("h1").style.color = "#000";
+		},
+		darkItUp(e){
+			if(this.darkMode){
+				document.querySelector("body").style.color = "#000";
+				document.querySelector("body").style.backgroundColor = "#fff";
+				e.target.parentElement.style.color="#000";
+			}else{
+				document.querySelector("body").style.color = "#fff";
+				document.querySelector("body").style.backgroundColor = "#000";
+				e.target.parentElement.style.color = "#fff";
+			}
+			this.darkMode = !this.darkMode;
+		}
+	}
 });
 	</script>
 </body>

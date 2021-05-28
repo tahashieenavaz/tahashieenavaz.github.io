@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Evolution of a web developer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="description" content="Building seo friendly, reliable and fast web applications while craving for simplicity.">
+	<meta property="og:site_name" content="Evolution of a web developer">
+
+	<meta property="og:url" content="https://tahashieenavaz.github.io/#/">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Taha Shieenavaz || Evolution of a web developer">
+	<meta property="og:description" content="Building seo friendly, reliable and fast web applications while craving for simplicity.">
+	<meta property="og:image" content="https://raw.githubusercontent.com/tahashieenavaz/tahashieenavaz.github.io/main/underdash.jpg">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="twitter:domain" content="tahashieenavaz.github.io">
+	<meta property="twitter:url" content="https://tahashieenavaz.github.io/#/">
+	<meta name="twitter:title" content="Taha Shieenavaz || Evolution of a web developer">
+	<meta name="twitter:description" content="Building seo friendly, reliable and fast web applications while craving for simplicity.">
+	<meta name="twitter:image" content="https://raw.githubusercontent.com/tahashieenavaz/tahashieenavaz.github.io/main/underdash.jpg">
+
+      
+
+	<meta name="author" content="Taha Shieenavaz">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css@7.0.0/normalize.css">
+	<style type="text/css">
+		body{
+			min-height:100vh;
+			min-width:100vw;
+			font-size:15px;
+			line-height:1.6;
+			overflow-x:hidden;
+		}
+
+
+		h1 { font-size: 1.5rem;}
+		h2 { font-size: 1.3rem; }
+		h3 { font-size: 1rem; }
+		a{
+			font-size:1rem;
+		}
+		.about,.about a{
+			font-size:1.2rem;
+		}
+		ul{font-size: .7rem;}
+		ul,span{
+			margin:0!important;
+			padding:0;
+		}
+		.wull{width: 100%;}
+		.press{
+			font-family: 'Press Start 2P', cursive;
+		}
+		.sand{
+			font-family: 'Quicksand', sans-serif;
+		}
+		.flex{
+			display:flex;
+			flex-wrap: nowrap;
+		}
+		.center{
+			align-items: center;
+		 	justify-content: center;
+		}
+		.container{
+			width: 100%;
+			margin-bottom: 8rem;
+		}
+		.container > *,footer > div{
+			width:85%;
+		}
+		.block{display: block}
+		.debug{
+			border:1px solid red;
+		}
+		.mx-auto{margin:0 auto;}
+		.max{max-width: 1500px;}
+		.dc{flex-direction: column;}
+		.flex-1{flex:1;}
+		footer{
+			background: black;
+			width: 100%;
+			color:#fff;
+			font-size: 1rem;
+			padding:3rem 0;
+		}
+		footer a{
+			font-size:0.9em;
+		}
+		*,::after,::before{box-sizing: border-box;}
+		ul{list-style: none;}
+		a{
+			color:inherit;
+			text-decoration: none;
+		}
+		.projects li{
+			display: flex;
+			position: relative;
+			min-height: 50px;
+			align-items: center;
+			flex:1;
+		}
+		.projects li::before{
+			content: "->";
+			margin:4px 0 0 -100px;
+			padding:0;
+			visibility: hidden;
+			position: absolute;
+			opacity: 0;
+			transition: .5s;
+			animation:out .2s;
+		}
+
+		.projects li:hover::before{
+			animation: in .2s;
+			visibility: visible;
+			animation-fill-mode: forwards;
+		}
+
+		@keyframes in{
+			from{
+				transform:translateX(0);
+				opacity: 0;
+			}
+			to{
+				transform:translateX(50px);
+				opacity: 1;
+			}
+		}
+		@keyframes out{
+			from{
+				transform:translateX(50px);
+				opacity: 1;
+			}
+			to{
+				transform:translateX(0);
+				opacity: 0;
+			}
+		}
+		@keyframes blinking{
+		    0% {opacity: 1;}
+		    50% {opacity: 0.75; }
+		    100% {opacity: 1;}
+		}
+		@media screen and (min-width:768px){
+			
+			body{
+				font-size:16px;
+			}
+
+			h1 { font-size: 2.5rem;}
+			h2 { font-size: 1.999rem; }
+			h3 { font-size: 1.75rem; }
+
+			a,ul,footer{
+				font-size:1.3rem;
+			}
+			.about,.about a{
+				font-size:1.4rem;
+			}
+			.container > *,footer > div{
+				width:60%;
+			}
+		}
+
+		@media screen and (min-width:1200px){
+			body{
+				font-size:18px;
+			}
+			footer{
+				padding:50px;
+			}
+		}
+
+		@media screen and (min-width:1600px){
+			body{
+				font-size:20px;
+			}
+			.container,footer > div{
+				align-items: flex-start!important;
+				padding:30px;
+			}
+			h1 { font-size: 5rem;}
+			h2 { font-size: 4rem; }
+			h3 { font-size: 3.75rem; }
+			.container > *,footer > div{
+				width:80%;
+			}
+			ul,footer{
+				font-size:2.5rem;
+			}
+			li{
+				margin:35px 0;
+			}
+			@keyframes in{
+				from{
+					transform:translateX(0);
+					opacity: 0;
+				}
+				to{
+					transform:translateX(50px);
+					opacity: 1;
+				}
+			}
+			@keyframes out{
+				from{
+					transform:translateX(50px);
+					opacity: 1;
+				}
+				to{
+					transform:translateX(0);
+					opacity: 0;
+				}
+			}
+
+			li::before{
+				margin:4px 0 0 -150px;
+				padding:0;
+				visibility: hidden;
+				position: absolute;
+				opacity: 0;
+				transition: .5s;
+				animation:out .2s;
+			}
+		}
+		.nav li:not(:first-child){
+			margin-left:30px;
+		}
+		div h3{
+			margin-top:0;
+		}
+
+		.about a:not(.ignore-link-color){
+			color:orange;
+		}
+		blockquote {
+		  background: white;
+		  padding: 20px 30px 20px 30px;
+		  margin: 30px 0;
+		  width: 100%;
+		  max-width: 500px;
+		  position: relative;
+		  color:#000!important;
+		}
+		blockquote:first-child{
+			margin-top:0;
+		}
+
+		.stacked {
+		  border: solid 2px;
+		  padding: 20px 30px 20px 30px;
+		  box-shadow: 13px 13px 0 0 white, 15px 15px 0 0 #0000FF, 15px 11px 0 0 #0000FF, 11px 15px 0 0 #0000FF;
+		  font-size:1rem;
+		}
+		.nav a{
+			transition: .25s;
+		}
+		.router-link-exact-active {
+			text-decoration: line-through;
+			color:#ccc;
+		}
+		.router-link-exact-active[href="#/hire"] {
+			text-decoration: none;
+			color:#000;
+			font-weight: 700;
+		}
+		.heart {
+		  fill: red;
+		  position: relative;
+		  width: 15px;
+		  display: none;
+		}
+		.router-link-exact-active .heart{
+			display:inline-block;
+		}
+		@keyframes pulse {
+		  0% { transform: scale(1); }
+		  50% { transform: scale(1.3); }
+		  100% { transform: scale(1); }
+		}
+		body.dark{
+			color:#fff!important;
+			background:#000!important;
+		}
+		.pointer{cursor: pointer;}
+	</style>
+</head>
+<body class="flex center dc sand">
+
+	<div id="app" class="container flex center max dc flex-1">
+		<div class="logo flex press">
+			<h1 class="pointer" @click="darkItUp">
+				<span class="block">
+					Taha
+				</span>
+				<span>
+					Shieenavaz
+				</span>
+			</h1>
+		</div>
+		<nav class="nav">
+			<ul class="flex">
+				<li><router-link to="/">Projects</router-link></li>
+				<li><router-link to="/qoutes">Qoutes</router-link></li>
+				<li><router-link to="/about">Who</router-link></li>
+				<!-- <li><router-link to="/hire">
+					Hire me
+					<svg class="heart" viewBox="0 0 32 29.6">
+					  <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+						c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+					</svg> 
+				</router-link></li> -->
+			</ul>
+		</nav>
+		<div class="flex-1" style="margin-top: 50px;min-height:50vh;">
+			<router-view></router-view>
+		</div>
+	</div>
+
+	<footer>
+		<div class="max mx-auto flex dc">
+			<span class="block">Designed & Developed By <a href="https://linkedin.com/in/tahashieenavaz">Taha Shieenavaz</a></span>
+		</div>
+	</footer>
+	<script src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"></script>
+	<script src="https://unpkg.com/vue-router@3.5.1/dist/vue-router.min.js"></script>
+	<script>
+const Home = {
+	template:`
+<div class="press">
+	<h3> github: </h3>
+	<nav>
+		<ul class="flex dc projects">
+			<li><a href="https://github.com/tahashieenavaz/tahashieenavaz.github.io" target="_blank"> this website </a></li>
+			<li><a href="#"> sass debugger </a></li>
+			<li><a href="#"> tehran taxi </a></li>
+			<li><a href="#"> Link </a></li>
+		</ul>
+	</nav>
+</div>
+	`
+}
+const Qoutes = {
+	template:`
+<div class="flex dc">
+	<blockquote v-for="q in qoutes" class="stacked">
+      <p>{{q.body}}</p>
+      <span style="position:absolute;right:10px;bottom:5px;">- {{q.from}}</span>
+    </blockquote>
+</div>
+
+	`,
+	data: () => ({
+		qoutes:"",
+	}),
+	mounted:function(){
+		fetch("https://tahashieenavaz.github.io/quotes/quotes.json").then(res => res.json())
+		.then((data) => {
+			this.qoutes = data;
+		});
+	},
+}
+const About = {
+	template:`
+<div class="about">
+	<p @click="loading=false">{{experience}} years of web development experience and being just {{age}} years old, I develop fullstack web mostly with Vue.js and PHP professionally.</p>
+		<p>I study computer engineering but highly interested in history and evolutionism. </p>
+		<p>You can often find me reading books and recommending them to others.</p>
+		<p>I keep life saving quotes from great legends and <router-link to="/qoutes">this</router-link> is a handfull list of them.</p>
+		<span @click="dynamicNumbers" style="opacity:1;color:tomato;cursor:pointer;animation:blinking .8s ease-out infinite;"> try this </span>
+</div>
+	`,
+	data:()=>({
+		age:0,
+		experience: 0,
+		interval:0,
+		loading:true,
+	}),
+	methods:{
+		dynamicNumbers(){
+			if(this.interval) return;
+			let times = 0;
+			this.interval = setInterval(()=>{
+				this.age = Math.floor(Math.random() * 100);
+				this.experience = Math.floor(Math.random() * 100);
+				if(times >= 17){
+					clearInterval(this.interval);
+					let year = new Date().getFullYear();
+					this.age = year - 2000;
+					this.experience = year - 2013;
+					this.interval = 0;
+				}
+				times++;
+			},100);
+		},
+	},
+	mounted:function(){
+		let year = new Date().getFullYear();
+		this.age = year - 2000;
+		this.experience = year - 2013;
+	}
+}
+const Hire = {
+	template:`
+<div>sdg</div>
+	`
+}
+let routerHandle = new VueRouter({
+	routes: [
+		{path: '/', component:Home},
+		{path: '/about', component:About,meta:{
+			title:"Who is ?"
+		}},
+		{path: '/hire', component:Hire},
+		{path: '/qoutes', component:Qoutes,meta:{
+			title: "Quotes Collection"
+		}},
+	]
+});
+const siteStaticTitle = "Evolution of a web developer";
+routerHandle.afterEach((to,from)=>{
+	Vue.nextTick(()=>{
+		document.title = to.meta.title ? siteStaticTitle + " || " + to.meta.title : siteStaticTitle;
+	})
+});
+
+let app = new Vue({
+	el:"#app",
+	router: routerHandle,
+	data: ()=>({
+		loading: false,
+		interval: 0,
+		fakeDelay: 1600,
+		darkMode: false,
+	}),
+	watch:{
+		$route(to,from){
+			this.startLoading();
+			if(to.path != '/about')
+				setTimeout(this.endLoading, this.fakeDelay);
+		},
+	},
+	methods:{
+		startLoading(){
+			if(this.interval == 0){
+				this.loading = true;
+				let el = document.querySelector("h1");
+				this.interval = setInterval(()=>{
+					el.style.color = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+				},75);
+			}
+		},
+		endLoading(){
+			clearInterval(this.interval);
+			this.interval = 0;
+			document.querySelector("h1").removeAttribute('style');
+		},
+		darkItUp(e){
+			document.querySelector("body").classList.toggle("dark");
+			this.darkMode = !this.darkMode;
+		}
+	}
+});
+	</script>
+</body>
+</html>

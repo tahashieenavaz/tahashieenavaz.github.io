@@ -1,0 +1,113 @@
+body{
+	min-height:100vh;
+	min-width:100vw;
+	font-size:10px;
+}
+h1{
+	font-size: 3em;
+}
+.wull{width: 100%;}
+.logo{
+	width: 60%;
+}
+.press{
+	font-family: 'Press Start 2P', cursive;
+}
+.flex{
+	display:flex;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-wrap: nowrap;
+}
+.center{
+	align-items: center;
+ 	justify-content: center;
+}
+.container{
+	width: 100%;
+}
+.block{display: block}
+.debug{
+	border:1px solid red;
+}
+.mx-auto{margin:0 auto;}
+.max{max-width: 1250px;}
+footer{
+	background: black;
+	width: 100%;
+	color:#fff;
+	padding:30px;
+	font-size: 1em;
+}
+footer *{
+	margin:20px 0;
+}
+*,::after,::before{box-sizing: border-box;}
+ul{list-style: none;margin:0;padding:0;}
+a{color:inherit;text-decoration: none;font-size:1.1233em;}
+li{flex:1;}
+
+li{
+	display: flex;
+	position: relative;
+	min-height: 50px;
+	align-items: center;
+}
+li::before{
+	content: "-->";
+	margin:4px 0 0 -100px;
+	padding:0;
+	visibility: hidden;
+	position: absolute;
+	opacity: 0;
+	transition: .5s;
+	font-size:15px;
+	animation:out .2s;
+}
+
+li:hover::before{
+	animation: in .2s;
+	visibility: visible;
+	animation-fill-mode: forwards;
+}
+
+@media only screen and (min-width: 900px){
+	body{
+		font-size: 16px;
+	}
+}
+@media only screen and (min-width: 1250px){
+	body{
+		font-size: 30px;
+	}
+	.container{
+		align-items: flex-start;
+	}
+}
+
+@media only screen and (min-width: 1500px){
+	body{
+		font-size: 35px;
+	}
+
+}
+@keyframes in{
+	from{
+		transform:translateX(0);
+		opacity: 0;
+	}
+	to{
+		transform:translateX(50px);
+		opacity: 1;
+	}
+}
+@keyframes out{
+	from{
+		transform:translateX(50px);
+		opacity: 1;
+	}
+	to{
+		transform:translateX(0);
+		opacity: 0;
+	}
+}

@@ -415,7 +415,7 @@ let app = new Vue({
 	watch:{
 		$route(to,from){
 			this.startLoading();
-			if(to.path != '/hire')
+			if(to.path != '/about')
 				setTimeout(this.endLoading, this.fakeDelay);
 		},
 	},

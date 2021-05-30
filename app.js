@@ -1,1 +1,98 @@
-const Home={template:'\n<div class="press">\n\t<h3> github: </h3>\n\t<nav>\n\t\t<ul class="flex dc projects">\n\t\t\t<li><a href="https://github.com/tahashieenavaz/tahashieenavaz.github.io" target="_blank"> this website </a></li>\n\t\t\t<li><a href="#"> sass debugger </a></li>\n\t\t\t<li><a href="#"> tehran taxi </a></li>\n\t\t\t<li><a href="#"> Link </a></li>\n\t\t</ul>\n\t</nav>\n</div>\n\t'},Qoutes={template:'\n<div class="flex dc">\n\t<blockquote v-for="q in quotes" class="stacked">\n      <p>{{q.body}}</p>\n      <span style="position:absolute;right:10px;bottom:5px;">- {{q.from}}</span>\n    </blockquote>\n</div>\n\n\t',data:()=>({quotes:""}),mounted:function(){fetch("https://tahashieenavaz.github.io/quotes/quotes.json").then(t=>t.json()).then(t=>{this.quotes=t})}},About={template:'\n<div class="about">\n\t<p @click="loading=false">{{experience}} years of web development experience and being just {{age}} years old, I develop fullstack web mostly with Vue.js and PHP professionally.</p>\n\t\t<p>I study computer engineering but highly interested in history and evolutionism. </p>\n\t\t<p>You can often find me reading books and recommending them to others.</p>\n\t\t<p>I keep life saving quotes from great legends and <router-link to="/qoutes">this</router-link> is a handfull list of them.</p>\n\t\t<span @click="dynamicNumbers" style="opacity:1;color:tomato;cursor:pointer;animation:blinking .8s ease-out infinite;"> try this </span>\n</div>\n\t',data:()=>({age:0,experience:0,interval:0,loading:!0}),methods:{dynamicNumbers(){if(this.interval)return;let t=0;this.interval=setInterval(()=>{if(this.age=Math.floor(100*Math.random()),this.experience=Math.floor(100*Math.random()),t>=17){clearInterval(this.interval);let t=(new Date).getFullYear();this.age=t-2e3,this.experience=t-2013,this.interval=0}t++},100)}},mounted:function(){let t=(new Date).getFullYear();this.age=t-2e3,this.experience=t-2013}};let routerHandle=new VueRouter({routes:[{path:"/",component:Home},{path:"/about",component:About,meta:{title:"Who is ?"}},{path:"/hire",component:Hire},{path:"/quotes",component:Quotes,meta:{title:"Quotes Collection"}}]});const siteStaticTitle="Evolution of a web developer";routerHandle.afterEach((t,e)=>{Vue.nextTick(()=>{document.title=t.meta.title?siteStaticTitle+" || "+t.meta.title:siteStaticTitle})});let app=new Vue({el:"#app",router:routerHandle,data:()=>({loading:!1,interval:0,fakeDelay:1600,darkMode:!1}),watch:{$route(t,e){this.startLoading(),"/about"!=t.path&&setTimeout(this.endLoading,this.fakeDelay)}},methods:{startLoading(){if(0==this.interval){this.loading=!0;let t=document.querySelector("h1");this.interval=setInterval(()=>{t.style.color=`#${Math.floor(16777215*Math.random()).toString(16)}`},75)}},endLoading(){clearInterval(this.interval),this.interval=0,document.querySelector("h1").removeAttribute("style")},darkItUp(t){document.querySelector("body").classList.toggle("dark"),this.darkMode=!this.darkMode}}});
+const Home = {
+	template:`
+<div>
+	<h3> github: </h3>
+	<nav>
+		<ul class="flex dc projects">
+			<li><a href="#"> this website </a></li>
+			<li><a href="#"> Sass Debuger </a></li>
+			<li><a href="#"> Link </a></li>
+			<li><a href="#"> Link </a></li>
+		</ul>
+	</nav>
+</div>
+	`
+}
+const Qoutes = {
+	template:`
+<div class="flex dc">
+	<blockquote v-for="q in qoutes" class="stacked">
+      <p>{{q.body}}</p>
+    </blockquote>
+</div>
+
+	`,
+	data: () => ({
+		qoutes:"",
+	}),
+	mounted:function(){
+		fetch("https://tahashieenavaz.github.io/qoutes/qoutes.json").then(res => res.json())
+		.then((data) => {
+			this.qoutes = data;
+		});
+	},
+}
+const About = {
+	template:`
+<div class="about">
+	<p>With {{experience}} years of web development experience and having just {{age}} years!</p>
+		<p>I develop fullstack web with Vue.js and <span title="lang">PHP</span>.</p>
+		<p>I study Computer Engineering but highly interested in history and evolutionism. </p>
+		<p>You can often find me reading books and <router-link to="/books">recommending</router-link> them to others.</p>
+		<p>I write and keep life saving quotes from great legends and <router-link to="/qoutes">this</router-link> is a handfull list of them.</p>
+		<p><a class="ignore-link-color" href="#">Good news! You can help me though! <span style="color:orange">(click)</span></a></p>
+		<span @click="dynamicNumbers" style="font-size:.7rem;color:tomato;cursor:pointer"> recalculate </span>
+</div>
+	`,
+	data:()=>({
+		age:0,
+		experience: 0,
+		interval:0,
+	}),
+	methods:{
+		dynamicNumbers(){
+			if(this.interval) return;
+			let times = 0;
+			this.interval = setInterval(()=>{
+				this.age = Math.floor(Math.random() * 100);
+				this.experience = Math.floor(Math.random() * 100);
+				if(times >= 17){
+					clearInterval(this.interval);
+					let year = new Date().getFullYear();
+					this.age = year - 2000;
+					this.experience = year - 2013;
+					this.interval = 0;
+				}
+				times++;
+			},100);
+		},
+	},
+	mounted:function(){
+		let year = new Date().getFullYear();
+		this.age = year - 2000;
+		this.experience = year - 2013;
+	}
+}
+const Hire = {
+	template:`
+<div>sdg</div>
+	`
+}
+let routerHandle = new VueRouter({
+	routes: [
+		{path: '/', component:Home},
+		{path: '/about', component:About},
+		{path: '/hire', component:Hire},
+		{path: '/qoutes', component:Qoutes},
+	]
+});
+
+
+
+let app = new Vue({
+	el:"#app",
+	router: routerHandle,
+	data: ()=>({
+
+	}),
+});

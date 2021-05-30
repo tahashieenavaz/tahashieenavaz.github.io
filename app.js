@@ -2,7 +2,7 @@ const Home = {
     template:
       '\n<div class="press">\n\t<h3> github: </h3>\n\t<nav>\n\t\t<ul class="flex dc projects">\n\t\t\t<li><a href="https://github.com/tahashieenavaz/tahashieenavaz.github.io" target="_blank"> this website </a></li>\n\t\t\t<li><a href="#"> sass debugger </a></li>\n\t\t\t<li><a href="#"> tehran taxi </a></li>\n\t\t\t<li><a href="#"> Link </a></li>\n\t\t</ul>\n\t</nav>\n</div>\n\t',
   },
-  Qoutes = {
+  Quotes = {
     template:
       '\n<div class="flex dc">\n\t<blockquote v-for="q in quotes" class="stacked">\n      <p>{{q.body}}</p>\n      <span style="position:absolute;right:10px;bottom:5px;">- {{q.from}}</span>\n    </blockquote>\n</div>\n\n\t',
     data: () => ({ quotes: "" }),
@@ -16,7 +16,7 @@ const Home = {
   },
   About = {
     template:
-      '\n<div class="about">\n\t<p @click="loading=false">{{experience}} years of web development experience and being just {{age}} years old, I develop fullstack web mostly with Vue.js and PHP professionally.</p>\n\t\t<p>I study computer engineering but highly interested in history and evolutionism. </p>\n\t\t<p>You can often find me reading books and recommending them to others.</p>\n\t\t<p>I keep life saving quotes from great legends and <router-link to="/qoutes">this</router-link> is a handfull list of them.</p>\n\t\t<span @click="dynamicNumbers" style="opacity:1;color:tomato;cursor:pointer;animation:blinking .8s ease-out infinite;"> try this </span>\n</div>\n\t',
+      '\n<div class="about">\n\t<p @click="loading=false">{{experience}} years of web development experience and being just {{age}} years old, I develop fullstack web mostly with Vue.js and PHP professionally.</p>\n\t\t<p>I study computer engineering but highly interested in history and evolutionism. </p>\n\t\t<p>You can often find me reading books and recommending them to others.</p>\n\t\t<p>I keep life saving quotes from great legends and <router-link to="/quotes">this</router-link> is a handfull list of them.</p>\n\t\t<span @click="dynamicNumbers" style="opacity:1;color:tomato;cursor:pointer;animation:blinking .8s ease-out infinite;"> try this </span>\n</div>\n\t',
     data: () => ({ age: 0, experience: 0, interval: 0, loading: !0 }),
     methods: {
       dynamicNumbers() {

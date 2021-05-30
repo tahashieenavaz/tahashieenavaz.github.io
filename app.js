@@ -1,6 +1,6 @@
 const Home = {
     template:
-      '\n<div class="press">\n\t<h3> github: </h3>\n\t<nav>\n\t\t<ul class="flex dc projects">\n\t\t\t<li><a href="https://github.com/tahashieenavaz/tahashieenavaz.github.io" target="_blank"> this website </a></li>\n\t\t\t<li><a href="#"> sass debugger </a></li>\n\t\t\t<li><a href="#"> tehran taxi </a></li>\n\t\t\t<li><a href="#"> Link </a></li>\n\t\t</ul>\n\t</nav>\n</div>\n\t',
+      '\n<div class="press">\n\t<h3> github: </h3>\n\t<nav>\n\t\t<ul class="flex dc projects">\n\t\t\t<li><a href="https://github.com/tahashieenavaz/tahashieenavaz.github.io" target="_blank"> this website </a></li>\n\t\t\t<li><a href="https://github.com/tahashieenavaz/sass-debugger"> sass debugger </a></li>\n\t\t\t</ul>\n\t</nav>\n</div>\n\t',
   },
   Quotes = {
     template:

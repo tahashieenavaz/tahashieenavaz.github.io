@@ -146,20 +146,23 @@
 				document.body.style.overflow = "hidden";
 			}
 		});
-		fetch("https://api.countapi.xyz/hit/tahashieenavaz/onlineusers").then(res => res.json())
-		.then(data => data);
 		window.onunload = window.onbeforeunload = (function(){
 			fetch("https://api.countapi.xyz/update/tahashieenavaz/onlineusers?amount=-1").then(res => res.json()).then(data => data);
 		});
 
 		// Last Visits
 		let lastVisits = null;
-		fetch("https://api.countapi.xyz/hit/tahashieenavaz/realpagevisits")
-			.then(res => res.json())
-			.then(data => {
-				lastVisits = data.value;
-				el.innerHTML = data.value;
-			});
+		window.onload = function(){
+			fetch("https://api.countapi.xyz/hit/tahashieenavaz/realpagevisits")
+				.then(res => res.json())
+				.then(data => {
+					lastVisits = data.value;
+					el.innerHTML = data.value;
+				});
+			fetch("https://api.countapi.xyz/hit/tahashieenavaz/onlineusers")
+				.then(res => res.json())
+				.then(data => data);
+		}
 		setInterval(()=>{
 			fetch("https://api.countapi.xyz/get/tahashieenavaz/onlineusers").then(res => res.json()).then(data => {
 				document.getElementById("onlineUsers").innerText = data.value;

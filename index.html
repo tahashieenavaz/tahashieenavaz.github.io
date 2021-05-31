@@ -67,11 +67,41 @@
 
 	<footer>
 		<div class="max mx-auto flex dc">
-			<span class="block">Designed & Developed By <a href="https://linkedin.com/in/tahashieenavaz">Taha Shieenavaz</a></span>
+			<span class="block">Designed & Developed By <a href="https://linkedin.com/in/tahashieenavaz" target="_blank">Taha Shieenavaz</a></span>
+			<div>
+				This page was loaded 
+				<span id="visits" style="transition: .5s;font-weight: bold;">. . .</span>
+				Times!
+			</div>
 		</div>
 	</footer>
 	<script src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"></script>
 	<script src="https://unpkg.com/vue-router@3.5.1/dist/vue-router.min.js"></script>
 	<script src="https://tahashieenavaz.github.io/app.js"></script>
+	<script>
+		const el = document.getElementById("visits");
+		let lastVisits = null;
+		fetch("https://api.countapi.xyz/hit/tahashieenavaz/realpagevisits")
+			.then(res => res.json())
+			.then(data => {
+				lastVisits = data.value;
+				el.innerHTML = data.value;
+			});
+
+		setInterval(()=>{
+			fetch("https://api.countapi.xyz/get/tahashieenavaz/realpagevisits")
+			.then(res => res.json())
+			.then(data => {
+				if(lastVisits != data.value){
+					lastVisits = data.value;
+					el.style.color = "red";
+					setTimeout(()=>{
+						el.style.color = "#fff";
+					}, 1500);
+					el.innerHTML = data.value;
+				}
+			});
+		},2000);
+	</script>
 </body>
 </html>

@@ -95,3 +95,55 @@ let app = new Vue({
     },
   },
 });
+const el = document.getElementById("visits");
+const container = document.querySelector('.dialog-container');
+let Bginterval = null;
+document.getElementById("close").addEventListener("click", ()=>{
+    container.style.display = "none";
+    document.body.style.overflowY = "visible";
+});
+document.addEventListener("keydown", (e)=>{
+    if(Bginterval == null){
+        Bginterval = setInterval(()=>{
+            container.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        }, 200);
+    }
+
+    if(e.shiftKey && e.ctrlKey && e.key == "Enter"){
+        container.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+});
+window.onunload = window.onbeforeunload = (function(){
+    fetch("https://api.countapi.xyz/update/tahashieenavaz/onlineusers?amount=-1").then(res => res.json()).then(data => data);
+});
+
+let lastVisits = null;
+window.onload = function(){
+    fetch("https://api.countapi.xyz/hit/tahashieenavaz/realpagevisits")
+        .then(res => res.json())
+        .then(data => {
+            lastVisits = data.value;
+            el.innerHTML = data.value;
+        });
+    fetch("https://api.countapi.xyz/hit/tahashieenavaz/onlineusers")
+        .then(res => res.json())
+        .then(data => data);
+}
+setInterval(()=>{
+    fetch("https://api.countapi.xyz/get/tahashieenavaz/onlineusers").then(res => res.json()).then(data => {
+        document.getElementById("onlineUsers").innerText = data.value;
+    });
+    fetch("https://api.countapi.xyz/get/tahashieenavaz/realpagevisits")
+    .then(res => res.json())
+    .then(data => {
+        if(lastVisits != data.value){
+            lastVisits = data.value;
+            el.style.color = "red";
+            setTimeout(()=>{
+                el.style.color = "#fff";
+            }, 1500);
+            el.innerHTML = data.value;
+        }
+    });
+},2000);
